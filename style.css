@@ -1,0 +1,188 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap');
+
+:root {
+    --p-light: #ffffff;
+    --p-main: #f06292;
+    --p-dark: #880e4f;
+    --gold: #b8860b;
+    --text-gray: #2d3436;
+    --glass: rgba(255, 255, 255, 0.95);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body { 
+    font-family: 'Chakra Petch', sans-serif; 
+    background-color: var(--p-light); 
+    color: var(--text-gray); 
+    line-height: 1.8;
+    overflow-x: hidden; 
+}
+
+h1, h2, h3, h4, .navbar-brand { font-family: 'Playfair Display', serif; }
+
+/* Navbar */
+.navbar { padding: 25px 0; transition: var(--transition); z-index: 1100; }
+.navbar.scrolled { 
+    background: var(--glass); 
+    backdrop-filter: blur(15px); 
+    padding: 12px 0; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+}
+.navbar-brand { font-size: 2.2rem; color: var(--p-dark) !important; font-weight: 700; }
+.navbar-brand span { color: var(--gold); }
+
+/* Buttons */
+.btn-lux-outline {
+    border: 2px solid var(--p-main);
+    color: var(--p-main);
+    padding: 10px 30px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+}
+.btn-lux-outline:hover { background: var(--p-main); color: white !important; transform: translateY(-3px); }
+
+/* Header & Layout */
+.detail-header {
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.detail-header::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+.header-title { position: relative; z-index: 2; color: white; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+.content-wrapper {
+    max-width: 900px;
+    margin: -100px auto 50px;
+    background: white;
+    padding: 80px;
+    border-radius: 50px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+/* ปรับเนื้อหาให้อ่านง่ายและตัวหนังสือเท่ากัน */
+.long-text p { 
+    font-size: 1.15rem; 
+    text-align: justify; 
+    color: #444; 
+    margin-bottom: 1.5rem;
+}
+
+.p-gold { 
+    color: var(--gold); 
+    margin: 50px 0 20px; 
+    border-left: 5px solid var(--gold); 
+    padding-left: 20px; 
+    font-weight: 700; 
+    font-size: 1.8rem;
+}
+
+.dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    float: left;
+    margin: 10px 15px 0 0;
+    color: var(--p-main);
+    line-height: 0.7;
+}
+
+/* คัดลอกไปวางใน style.css */
+.section-img {
+    width: 100% !important;
+    height: auto;
+    display: block;
+    margin: 40px 0;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.long-text p {
+    text-align: justify; /* จัดตัวหนังสือให้เท่ากันซ้ายขวา */
+    margin-bottom: 20px;
+    font-size: 1.15rem;
+}
+
+footer { padding: 50px 0; border-top: 1px solid #eee; margin-top: 50px; }
+
+/* Home Grid */
+.dest-card {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 400px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.dest-card:hover { transform: translateY(-10px); }
+.dest-card img { width: 100%; height: 100%; object-fit: cover; }
+.dest-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    color: white;
+}
+
+/* --- ส่วน Header ที่ใช้ภาพพื้นหลัง --- */
+.detail-header {
+    width: 100%;
+    height: 70vh; /* ความสูง 70% ของหน้าจอ */
+    min-height: 400px; /* ป้องกันภาพเตี้ยเกินไป */
+    background-color: #333; /* สีสำรองถ้าเน็ตช้าภาพไม่มา */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    /* หากรูปไม่ขึ้นในมือถือ ให้ลบบรรทัด background-attachment: fixed; ออก */
+    background-attachment: scroll; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ใส่ Overlay ให้จางๆ เพื่อให้ตัวหนังสือขาวชัดขึ้น */
+.detail-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.header-title {
+    position: relative;
+    z-index: 2; /* ให้อยู่เหนือ Overlay */
+    color: white !important;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* --- ส่วนรูปภาพประกอบในเนื้อหา (<img>) --- */
+.section-img {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 300px; /* จองพื้นที่ไว้ */
+    display: block !important;
+    margin: 40px auto;
+    border-radius: 30px;
+    object-fit: cover;
+    background-color: #f0f0f0; /* สีพื้นหลังระหว่างรอโหลด */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
